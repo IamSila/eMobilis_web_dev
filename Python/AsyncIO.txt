@@ -1,3 +1,8 @@
+drawn and read from https://realpython.com/async-io-python/#the-asyncawait-syntax-and-native-coroutines
+
+
+
+
 AsyncIO in python: A complete walk through
 
 - AsyncIO is a concurrent programming design
@@ -5,3 +10,51 @@ AsyncIO in python: A complete walk through
 - asyncio -> python package that provides a foundation and api for running and managing
 coroutines
 
+- It is enabled through asyncio module/package and uses async and await keywords
+
+- what are asynchronous routine?
+    a) they can pause while waiting for their ultimate results and let other routines run in the meanwhile
+    b)Asynchronous code, through the mechanism above, facilitates concurrent execution. To put it differently,
+    asynchronous code gives the look and feel of concurrency
+
+- concurrency - threading and AsyncIO
+- parallelism - multiprocessing
+
+######The asyncio package and the async/await
+- let's explore its implementation in python
+- the two keyword help declare, build, execute and manage asynchronous code
+
+##The async/await syntax and native coroutines
+- At the heart of async IO are coroutines. A coroutine is a specialized version of a Python generator function.
+- a coroutine is a function that can suspend its execution before it reaches return, and it can indirectly pass control to another coroutine for some time.
+-the easiest way to pick up how coroutines work is to start making some.
+
+[check countasync.py for coding examples]
+
+###The rules of asyncIO
+ If Python encounters an await f() expression in the scope of g(), this is how await tells the event loop, “Suspend execution of g() until whatever I’m waiting on—the result of f()—is returned. In the meantime, go let something else run.”
+ - In code it looks like this:
+
+async def g():
+    #pause here and come back to g() when f() is ready
+    r = await f()
+    return
+
+
+
+A function that you introduce with async def is a coroutine. It may use await, return, or yield, but all of these are optional. Declaring async def noop(): pass is valid:
+
+        1. Using await and/or return creates a coroutine function. To call a coroutine function, you must await it to get its results.
+
+        2. It is less common (and only recently legal in Python) to use yield in an async def block. This creates an asynchronous generator, which you iterate over with async for. Forget about async generators for the time being and focus on getting down the syntax for coroutine functions, which use await and/or return.
+
+        3. Anything defined with async def may not use yield from, which will raise a SyntaxError.
+
+    * Just like it’s a SyntaxError to use yield outside of a def function, it is a SyntaxError to use await outside of an async def coroutine. You can only use await in the body of coroutines.
+
+[check async_rules.py for illustration of above rules]
+
+
+- For now, just know that an awaitable object is either (1) another coroutine or (2) an object defining an .__await__() dunder method that returns an iterator. If you’re writing a program, for the large majority of purposes, you should only need to worry about case #1.
+
+####Async IO design patterns
