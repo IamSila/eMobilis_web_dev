@@ -1,4 +1,4 @@
-import asyncio
+"""import asyncio
 
 async def f():
     y = await z(x) # OK -  'await' and 'return' allowed in coroutines
@@ -14,3 +14,4 @@ def m(x):
     y = await z(x) # No - syntax error (no `async def` here)
     return y
 
+"""

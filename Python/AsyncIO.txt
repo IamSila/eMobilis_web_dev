@@ -58,3 +58,17 @@ A function that you introduce with async def is a coroutine. It may use await, r
 - For now, just know that an awaitable object is either (1) another coroutine or (2) an object defining an .__await__() dunder method that returns an iterator. If you’re writing a program, for the large majority of purposes, you should only need to worry about case #1.
 
 ####Async IO design patterns
+# Chaining coroutines
+- A key feature of coroutines is that they can be chained together. (Remember, a coroutine object is awaitable, so another coroutine can await it.) This allows you to break programs into smaller, manageable, recyclable coroutines:
+
+[check async_chained.py for an example]
+
+
+
+###Awaitables
+
+We say that an object is an awaitable object if it can be used in an await expression. Many asyncio APIs are designed to accept awaitables.
+
+There are three main types of awaitable objects: coroutines, Tasks, and Futures.
+
+
