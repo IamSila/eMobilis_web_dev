@@ -8,18 +8,20 @@
 <body>
     <h3>insert students</h3>
 
-    <form action="post" enctype="multipart/form-data">
+    <form action="/insertData/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        <label for="name">NAME</label>
         <input name="name" type="text">
         <br>
+        <label for="email">EMAIL</label>
         <input name="email" type="email">
         <br>
+        <label for="phone">PHONE NUMBER</label>
         <input name="phone" type="number">
         <br>
-        <input name="number" type="number">
+        <input name="age" type="number">
         <br>
-        <input name="cv" type="file">
-        <br>
+
         <input type="submit">
 
     </form>
