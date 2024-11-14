@@ -8,21 +8,101 @@
 <body>
     <h3>insert students</h3>
 
-    <form action="/insertData/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="name">NAME</label>
-        <input name="name" type="text">
-        <br>
-        <label for="email">EMAIL</label>
-        <input name="email" type="email">
-        <br>
-        <label for="phone">PHONE NUMBER</label>
-        <input name="phone" type="number">
-        <br>
-        <input name="age" type="number">
-        <br>
-
-        <input type="submit">
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stylish Form</title>
+        <style>
+            /* General body styling */
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f9;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+    
+            /* Form container styling */
+            form {
+                background: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 400px;
+            }
+    
+            /* Label styling */
+            label {
+                display: block;
+                font-size: 14px;
+                color: #333;
+                margin-bottom: 5px;
+            }
+    
+            /* Input styling */
+            input[type="text"],
+            input[type="email"],
+            input[type="number"] {
+                width: 100%;
+                padding: 10px;
+                font-size: 14px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+    
+            /* Submit button styling */
+            input[type="submit"] {
+                background: #007BFF;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                font-size: 14px;
+                cursor: pointer;
+                border-radius: 4px;
+                width: 100%;
+                transition: background 0.3s;
+            }
+    
+            input[type="submit"]:hover {
+                background: #0056b3;
+            }
+    
+            /* Responsive styling */
+            @media (max-width: 600px) {
+                form {
+                    padding: 15px;
+                }
+    
+                input[type="submit"] {
+                    font-size: 16px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <form action="/insertData/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">NAME</label>
+            <input name="name" type="text" id="name">
+            <label for="email">EMAIL</label>
+            <input name="email" type="email" id="email">
+            <label for="phone">PHONE NUMBER</label>
+            <input name="phone" type="number" id="phone">
+            <label for="age">AGE</label>
+            <input name="age" type="number" id="age">
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+    </html>
+    
 
     </form>
 </body>
